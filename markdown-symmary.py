@@ -5,7 +5,7 @@ import codecs
 # 需要生成目录的文件夹
 rootdir = '../note'
 # 需要忽略的文件夹
-ignorePathList = ['.git', '.obsidian', '.gitignore']
+ignorePathList = ['.git', '.obsidian', '.gitignore', 'README.md']
 
 
 def listPath(rootDir, file):
@@ -45,8 +45,9 @@ def listPath(rootDir, file):
 
 #       print(os.path.split(path))
 #       print(os.path.splitext(i))
+
        print('- [%s](./%s)：%s' %(os.path.splitext(i)[0], os.path.relpath(path, rootdir).replace('\\', r'/'), os.path.splitext(i)[0]))
-       file.write('- [%s](./%s)：%s\n' %(os.path.splitext(i)[0], os.path.relpath(path, rootdir).replace('\\', r'/'), os.path.splitext(i)[0]))
+       file.write('- [%s](./%s)：%s\n' %(os.path.splitext(i)[0], os.path.relpath(path, rootdir).replace('\\', r'/').replace(' ', '\\ '), os.path.splitext(i)[0]))
        count = 0
        count += 1
 #      print(path + 'is dir')
@@ -59,5 +60,6 @@ if __name__ == '__main__':
    file = codecs.open(rootdir + '/CONTENTS.md', 'w', 'utf-8')
    file.write('')
    file.write('# 笔记目录\n')
+   file.write('- [README](./README.md)：README\n')
    listPath(rootdir, file)
    file.close()
