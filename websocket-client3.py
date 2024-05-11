@@ -1,8 +1,8 @@
 from websocket import create_connection
 
-ws = create_connection("ws://192.168.43.41:80")
+ws = create_connection("ws://192.168.0.102:80")
 print("Sending 'Hello, World'...")
-ws.send("syske master\n ha ha ha ha......hello world!!!")
+ws.send("taggleLed")
 print("Sent")
 print("Receiving...")
 result = ws.recv()
